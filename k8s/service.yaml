@@ -3,8 +3,10 @@ kind: Service
 
 metadata:
   name: college-event-service
+  namespace: college-event
 
 spec:
+
   selector:
     app: college-event
 
