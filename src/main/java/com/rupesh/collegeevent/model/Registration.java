@@ -2,7 +2,7 @@ package com.rupesh.collegeevent.model;
 
 public class Registration {
 
-    private int id;
+    private Integer id;
     private String studentName;
     private String email;
     private String department;
@@ -11,7 +11,7 @@ public class Registration {
     public Registration() {
     }
 
-    public Registration(int id, String studentName, String email, String department, String eventName) {
+    public Registration(Integer id, String studentName, String email, String department, String eventName) {
         this.id = id;
         this.studentName = studentName;
         this.email = email;
@@ -19,11 +19,11 @@ public class Registration {
         this.eventName = eventName;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

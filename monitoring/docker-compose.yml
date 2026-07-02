@@ -1,0 +1,43 @@
+services:
+
+  graphite:
+    image: graphiteapp/graphite-statsd
+    container_name: graphite
+    ports:
+      - "8082:80"
+      - "2003:2003"
+      - "2004:2004"
+      - "8125:8125/udp"
+
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana-oss
+
+    container_name: grafana
+
+    ports:
+      - "3000:3000"
+
+    restart: unless-stopped
+
+    depends_on:
+      - graphite
+
+  nagios:
+    image: jasonrivers/nagios
+    container_name: nagios
+    ports:
+      - "8083:80"
+    volumes:
+      - ./nagios/etc:/opt/nagios/etc
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    restart: unless-stopped
